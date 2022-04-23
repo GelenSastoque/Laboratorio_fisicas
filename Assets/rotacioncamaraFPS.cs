@@ -10,7 +10,7 @@ public class rotacioncamaraFPS : MonoBehaviour
     void Start()
     {
         camera=transform.Find("Main Camera");
-        Cursor.lockState=CursorLockMode.Locked; 
+        //Cursor.lockState=CursorLockMode.Locked; 
     }
 
     // Update is called once per frame

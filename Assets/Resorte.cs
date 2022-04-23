@@ -14,11 +14,11 @@ public class Resorte : MonoBehaviour
     //}
     GameObject obj1;
     public float Masa = 0.0f, Elasticidad = 0.0f, Amortiguacion = 0.0f, x = 6.0f, Velocidad_Inicial = 0.0f;
-
+    LineRenderer line;
     // Start is called before the first frame update
     void Start()
     {
-       
+        line = gameObject.AddComponent<LineRenderer>();
         obj1 = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         obj1.transform.localScale = new Vector3(5 , 5 , 5 );
     }
@@ -27,7 +27,7 @@ public class Resorte : MonoBehaviour
     void Update()
     {
         obj1.transform.position = new Vector3(x, transform.position.y, transform.position.z);
-        //dibujarlinea();
+        dibujarlinea();
         x = Velocidad_Inicial * Time.deltaTime + x;
         Velocidad_Inicial = calculos(x, Velocidad_Inicial);
     }
@@ -47,16 +47,16 @@ public class Resorte : MonoBehaviour
         velocidad = v + (m1 / 6) + (m2 / 3) + (m3 / 3) + (m4 / 6);
         return velocidad;
     }
-    //void dibujarlinea()
-    //{
-    //    Color c1 = Color.red;
-    //    Color c2 = new Color(1, 1, 1, 0);
-    //    var line = gameObject.AddComponent<LineRenderer>();
-    //    Vector3 startingPoint = new Vector3(21.1f, 61.4f, -2.4f);
-    //    Vector3 endPoint = new Vector3(2.0f, 61.4f, -2.4f);
-    //    line.SetPosition(0, startingPoint);
-    //    line.SetPosition(1, endPoint);
-    //    //line.startColor(c1);
-    //}
+    void dibujarlinea()
+    {
+        Color c1 = Color.red;
+        Color c2 = new Color(1, 1, 1, 0);
+        
+        Vector3 startingPoint = new Vector3(21.1f, 61.4f, -2.4f);
+        Vector3 endPoint = new Vector3(x, 61.4f, -2.4f);
+        line.SetPosition(0, startingPoint);
+        line.SetPosition(1, endPoint);
+        //line.startColor(c1);
+    }
 
 }
